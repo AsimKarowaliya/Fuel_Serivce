@@ -22,6 +22,7 @@ namespace Fuel_Serivce.Controllers
 
         public IActionResult Login()
         {
+
             return View();
         }
 
