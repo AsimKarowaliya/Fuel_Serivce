@@ -4,7 +4,9 @@
 @{
 }
 
+<form >
 
-<button type="button">Manage Profile</button>
-<button type="button">Get Fuel Quote</button>
-<button type="button">View Fuel Quote History</button>
+    <button type="button">Manage Profile</button>
+    <input asp-controller="Home" asp-action="Fuel_Quote_Form" formmethod="post" type="submit" class="fadeIn fourth" value="Get Fuel Quote">
+    <button type="button">View Fuel Quote History</button>
+</form>
