@@ -39,8 +39,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="Login">Login </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Main"> Main </a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-dark dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"asp-controller="Home" asp-action="Main"> Profile </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-controller="Home" asp-action="Profile_Management">Manage Profile</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="Fuel_Quote_Form">Get Fuel Quote Form</a>
+                                <a class="dropdown-item"asp-controller="Home" asp-action="Fuel_History">Fuel History</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Signout</a>
+                            </div>
                         </li>
                     </ul>
                 </div>

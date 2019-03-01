@@ -2,4 +2,23 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewData["Title"] = "Register";
 }
+<form class="needs-validation" novalidate>
+    <div class="form-group">
+        User Name: <input type="text" class="form-control" name="UserName" required minlength="2" maxlength="50">
+        <div class="invalid-feedback">Please provide input.</div>
+    </div>
+
+    <div class="form-group">
+        Password: <input type="text" class="form-control" name="password" required minlength="4" maxlength="10">
+        <div class="invalid-feedback">Please provide input.</div>
+    </div>
+
+    <div class="form-group">
+        Retype Password: <input type="text" class="form-control" name="retype_password" required minlength="4" maxlength="10">
+        <div class="invalid-feedback">Please provide input.</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
