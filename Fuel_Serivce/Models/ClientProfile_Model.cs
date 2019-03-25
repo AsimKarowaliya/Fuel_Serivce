@@ -12,12 +12,19 @@ namespace Fuel_Service.Models
         public string Fullname { get; set; }
 
         [Required]
-        public string Address { get; set; }
-        
-        [Required]
-        public string city { get; set; }
+        public string Address1 { get; set; }
 
         [Required]
-        public int zipcode { get; set; }
+        public string Address2 { get; set; }
+
+        [Required]
+        public string City { get; set; }
+
+        [Required]
+        public string State { get; set; }
+
+
+        [Required]
+        public string Zipcode { get; set; }
     }
 }

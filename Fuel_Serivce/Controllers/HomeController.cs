@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Fuel_Serivce.Models;
 using Fuel_Service.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Fuel_Serivce.Controllers
 {
@@ -13,7 +14,7 @@ namespace Fuel_Serivce.Controllers
     {
         public IActionResult Index()
         {
-            ViewBag.Message("Hello");
+           
             return View();
         }
 
@@ -46,19 +47,46 @@ namespace Fuel_Serivce.Controllers
         {
             return View();
         }
-           
+        [HttpGet]
         public IActionResult Fuel_Quote_Form()
         {
             return View();
         }
-
+        [HttpPost]
+        public IActionResult Fuel_Quote_Form(FuelQuote_Model vm)
+        {
+            return View();
+        }
         public IActionResult Fuel_History()
         {
             return View();
         }
+        [HttpGet]
         public IActionResult Profile_Management()
         {
             return View();
+        }
+        [HttpPost]
+        
+        public IActionResult Profile_Management(ClientProfile_Model client)
+        {
+            string name = "Asim";
+            string address1 = "spring";
+            string address2 = "idks";
+            string city = "Houston";
+            string state = "TX";
+            string zipcode = "77379";
+            if (ModelState.IsValid){
+
+              if(client.Fullname == name && client.Address1 == address1 && client.Address2 == address2 && client.City == city &&client.State == state && client.Zipcode == zipcode)
+            {
+                    return RedirectToAction("Index", "Home");
+                }
+             ModelState.AddModelError("", "worng input");
+            }
+           
+            
+            return View(client);
         }
 
         public IActionResult Register()

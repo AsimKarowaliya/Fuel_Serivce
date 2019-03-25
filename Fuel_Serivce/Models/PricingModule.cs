@@ -8,7 +8,6 @@ namespace Fuel_Service.Models
 {
     public class PricingModule
     {
-        [Required]
-        public int Gallons { get; set; }
+       
     }
 }
