@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Fuel_Serivce.Models;
+using Fuel_Service.Models;
 
 namespace Fuel_Serivce.Controllers
 {
@@ -12,6 +13,7 @@ namespace Fuel_Serivce.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.Message("Hello");
             return View();
         }
 
@@ -19,13 +21,27 @@ namespace Fuel_Serivce.Controllers
         {
             return View();
         }
-
+        [HttpGet]
         public IActionResult Login()
         {
 
             return View();
         }
-
+        [HttpPost]
+        public IActionResult Login(LoginModel vm)
+        {
+            string username = "Asim";
+            string password = "abc";
+            if (ModelState.IsValid)
+            {
+                if (vm.UserName == username && vm.Password == password)
+                {
+                    return RedirectToAction("Profile_Management", "Home");
+                }
+                ModelState.AddModelError("", "Invalid login");
+            }
+            return View(vm);
+        }
         public IActionResult Main()
         {
             return View();
