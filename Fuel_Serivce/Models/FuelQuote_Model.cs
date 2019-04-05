@@ -10,5 +10,7 @@ namespace Fuel_Service.Models
     {
         [Required]
         public int Gallons { get; set; }
+
+        
     }
 }
