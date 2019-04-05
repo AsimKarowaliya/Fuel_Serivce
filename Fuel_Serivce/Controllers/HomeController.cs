@@ -7,14 +7,18 @@ using Microsoft.AspNetCore.Mvc;
 using Fuel_Serivce.Models;
 using Fuel_Service.Models;
 using Microsoft.AspNetCore.Authorization;
+using Fuel_Service.Repository;
 
 namespace Fuel_Serivce.Controllers
 {
     public class HomeController : Controller
     {
+        int userkey;
+
         public IActionResult Index()
         {
-           
+            string x = userkey.ToString();
+            ViewBag.Result = "HI USER " + x;
             return View();
         }
 
@@ -22,27 +26,38 @@ namespace Fuel_Serivce.Controllers
         {
             return View();
         }
-        [HttpGet]
+
         public IActionResult Login()
         {
 
             return View();
         }
+
+
         [HttpPost]
-        public IActionResult Login(LoginModel vm)
+        public IActionResult CheckUser()
         {
-            string username = "Asim";
-            string password = "abc";
-            if (ModelState.IsValid)
+            LoginModel lmodel = new LoginModel();
+            lmodel.UserName = HttpContext.Request.Form["username"].ToString();
+            lmodel.Password = HttpContext.Request.Form["password"].ToString();
+
+            int result = lmodel.CheckLogin();
+            if (result == 5)
             {
-                if (vm.UserName == username && vm.Password == password)
-                {
-                    return RedirectToAction("Profile_Management", "Home");
-                }
-                ModelState.AddModelError("", "Invalid login");
+                userkey = result;
+                return View("Index");
             }
-            return View(vm);
+            else
+            {
+
+                ViewBag.Result = "Wrong Username or Password";
+                return View("Login");
+            }
+
+
         }
+
+
         public IActionResult Main()
         {
             return View();
@@ -67,7 +82,7 @@ namespace Fuel_Serivce.Controllers
             return View();
         }
         [HttpPost]
-        
+
         public IActionResult Profile_Management(ClientProfile_Model client)
         {
             string name = "Asim";
@@ -76,23 +91,64 @@ namespace Fuel_Serivce.Controllers
             string city = "Houston";
             string state = "TX";
             string zipcode = "77379";
-            if (ModelState.IsValid){
+            if (ModelState.IsValid) {
 
-              if(client.Fullname == name && client.Address1 == address1 && client.Address2 == address2 && client.City == city &&client.State == state && client.Zipcode == zipcode)
-            {
+                if (client.Fullname == name && client.Address1 == address1 && client.Address2 == address2 && client.City == city && client.State == state && client.Zipcode == zipcode)
+                {
                     return RedirectToAction("Index", "Home");
                 }
-             ModelState.AddModelError("", "worng input");
+                ModelState.AddModelError("", "worng input");
             }
-           
-            
+
+
             return View(client);
         }
+
 
         public IActionResult Register()
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult GetUserInfo()
+        {
+            RegisterModel newuser = new RegisterModel();
+            newuser.UserName = HttpContext.Request.Form["UserName"].ToString();
+            newuser.Password = HttpContext.Request.Form["Password"].ToString();
+            newuser.RetypedPassword = HttpContext.Request.Form["retype_password"].ToString();
+            
+            bool userexists = newuser.CheckUser();
+            
+            if (newuser.Password != newuser.RetypedPassword || userexists)
+            {
+                ViewBag.Result = "Passwords do not match! OR Username already Exists!";
+                return View("Register");
+
+            }
+            else
+            {
+                int result = newuser.SaveNewUser();
+               
+                if (result > 0)
+                {
+                    ViewBag.Result = "Data saved successfully!";
+                }
+                else
+                {
+                    ViewBag.Result = "Something went wrong!";
+                }
+                return View("Login");
+                
+
+            }
+            
+
+            
+            
+
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

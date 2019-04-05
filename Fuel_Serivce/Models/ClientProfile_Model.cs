@@ -25,5 +25,10 @@ namespace Fuel_Service.Models
 
         [Required]
         public string Zipcode { get; set; }
+
+        
+
+
+
     }
 }

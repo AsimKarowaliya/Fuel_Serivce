@@ -4,14 +4,14 @@
 @{
     ViewData["Title"] = "Register";
 }
-<form class="needs-validation" novalidate>
+<form asp-controller="Home" asp-action="GetUserInfo" method="post" class="needs-validation" novalidate>
     <div class="form-group">
         User Name: <input type="text" class="form-control" name="UserName" required minlength="2" maxlength="50">
         <div class="invalid-feedback">Please provide input.</div>
     </div>
 
     <div class="form-group">
-        Password: <input type="password" class="form-control" name="password" required minlength="4" maxlength="10">
+        Password: <input type="password" class="form-control" name="Password" required minlength="4" maxlength="10">
         <div class="invalid-feedback">Please provide input.</div>
     </div>
 
@@ -22,3 +22,6 @@
 
     <button type="submit" class="btn btn-primary">Register</button>
 </form>
+<br /><br />
+
+<h2 style="font-style:italic; color:deeppink">@ViewBag.Result</h2>
