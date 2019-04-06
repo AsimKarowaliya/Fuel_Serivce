@@ -11,14 +11,18 @@ using Fuel_Service.Repository;
 
 namespace Fuel_Serivce.Controllers
 {
+    public static class Globals
+    {
+        public static int userkey;
+    }
+
     public class HomeController : Controller
     {
-        int userkey;
+        
 
         public IActionResult Index()
         {
-            string x = userkey.ToString();
-            ViewBag.Result = "HI USER " + x;
+            
             return View();
         }
 
@@ -42,9 +46,9 @@ namespace Fuel_Serivce.Controllers
             lmodel.Password = HttpContext.Request.Form["password"].ToString();
 
             int result = lmodel.CheckLogin();
-            if (result == 5)
+            if (result > 0)
             {
-                userkey = result;
+                Globals.userkey = result;
                 return View("Index");
             }
             else

@@ -29,9 +29,12 @@ namespace Fuel_Service.Models
             sda.Fill(dt);
             con.Close();
 
-            int x = Convert.ToInt32(dt.Rows[0][0].ToString());
+            int x = 0;
+
+            
             if (dt.Rows.Count != 0)
             {
+                x = Convert.ToInt32(dt.Rows[0][0].ToString());
                 return x;
             }
             else
