@@ -22,7 +22,8 @@ namespace Fuel_Serivce.Controllers
 
         public IActionResult Index()
         {
-            
+            string y = Globals.userkey.ToString();
+            ViewBag.Result = "User " + y + " has logged in";
             return View();
         }
 
@@ -85,27 +86,26 @@ namespace Fuel_Serivce.Controllers
         {
             return View();
         }
+
         [HttpPost]
-
-        public IActionResult Profile_Management(ClientProfile_Model client)
+        public IActionResult GetClientInfo()
         {
-            string name = "Asim";
-            string address1 = "spring";
-            string address2 = "idks";
-            string city = "Houston";
-            string state = "TX";
-            string zipcode = "77379";
-            if (ModelState.IsValid) {
 
-                if (client.Fullname == name && client.Address1 == address1 && client.Address2 == address2 && client.City == city && client.State == state && client.Zipcode == zipcode)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-                ModelState.AddModelError("", "worng input");
+            ClientProfile_Model client = new ClientProfile_Model();
+            client.Fullname = HttpContext.Request.Form["fullname"].ToString();
+            client.Address1 = HttpContext.Request.Form["addressline1"].ToString();
+            client.Address2 = HttpContext.Request.Form["addressline2"].ToString();
+            client.City = HttpContext.Request.Form["cityname"].ToString();
+            client.State = HttpContext.Request.Form["state"].ToString();
+            client.Zipcode = HttpContext.Request.Form["zipcode"].ToString();
+
+            int result = client.SaveClientProfile(Globals.userkey);
+
+            if (result > 0)
+            {
+                ViewBag.Result = "Data saved successfully!";
             }
-
-
-            return View(client);
+            return View("Profile_Management");
         }
 
 

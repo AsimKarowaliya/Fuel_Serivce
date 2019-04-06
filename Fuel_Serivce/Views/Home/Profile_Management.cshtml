@@ -5,7 +5,7 @@
     ViewData["Title"] = "Manage Profile";
 }
 
-<form class="needs-validation" novalidate>
+<form asp-controller="home" asp-action="GetClientInfo"  class="needs-validation" novalidate>
     <div class="form-group">
         Full Name: <input type="text" class="form-control" name="fullname" required minlength="2" maxlength="50">
         <div class="invalid-feedback">Please provide input.</div>
@@ -88,3 +88,5 @@
 
 
 </form>
+
+<h2 style="text-align:center; color:deeppink">@ViewBag.Result</h2>
