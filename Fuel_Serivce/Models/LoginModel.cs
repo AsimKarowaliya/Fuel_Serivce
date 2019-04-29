@@ -17,7 +17,7 @@ namespace Fuel_Service.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public int CheckLogin()
+        public (int, string) CheckLogin()
         {
             SqlConnection con = new SqlConnection(GetConString.ConString());
             string query = "SELECT * FROM Users WHERE Username = '" + UserName + "' AND Password = '" + Password + "'";
@@ -30,16 +30,16 @@ namespace Fuel_Service.Models
             con.Close();
 
             int x = 0;
-
+            string usertype = dt.Rows[0][1].ToString();
             
             if (dt.Rows.Count != 0)
             {
                 x = Convert.ToInt32(dt.Rows[0][0].ToString());
-                return x;
+                return (x, usertype);
             }
             else
             {
-                return 0;
+                return (0, usertype);
             }
         }
     }

@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<Fuel_Service.Models.All_Order>
+@{
+    ViewData["Title"] = "Company History";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Order #</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Date</th>
+            <th scope="col">Gallons Requested</th>
+            <th scope="col">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null)
+        {
+            //nothing
+        }
+        else
+        {
+        @foreach (var d in Model)
+            {
+            <tr>
+                <td>@d.quoteid</td>
+                <td>@d.name</td>
+                <td>@d.address</td>
+                <td>@d.orderdate</td>
+                <td>@d.gallons</td>
+                <td>$@d.total</td>
+
+            </tr>
+            }
+        }
+    </tbody>
+</table>

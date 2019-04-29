@@ -1,26 +1,32 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@model List<Fuel_Service.Models.Order_Model>
 @{
     ViewData["Title"] = "History";
 }
+
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">Order #</th>
             <th scope="col">Date</th>
-            <th scope="col">Address</th>
             <th scope="col">Gallons Requested</th>
             <th scope="col">Total</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td scope="row">1</td>
-            <td scope="row">2019-28-02</td>
-            <td scope="row">Louetta Ash Dr</td>
-            <td scope="row">10000</td>
-            <td scope="row">$10,000</td>
-        </tr>
+        
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.quoteid</td>
+                <td>@order.orderdate</td>
+                <td>@order.gallons</td>
+                <td>$@order.total</td>
+
+            </tr>
+        }
+
     </tbody>
 </table>

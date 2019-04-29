@@ -43,7 +43,10 @@ namespace Fuel_Service.Models
             if (dt.Rows.Count != 0)
             {
                 SqlConnection con2 = new SqlConnection(GetConString.ConString());
-                string query2 = "UPDATE Profiles SET (FullName, AddressOne, AddressTwo, City, State, ZipCode) VALUES ('" + Fullname + "', '" + Address1 + "', '" + Address2 + "', '" + City + "', '"+ State +"', '" + Zipcode + "') WHERE (UserKey='"+userkey+"')";
+                string query2 = "UPDATE Profiles " +
+                                " SET FullName = '"+Fullname+"', AddressOne ='"+Address1+"', AddressTwo ='"+Address2+"', City ='"+City+"', State='"+State+"', ZipCode='"+Zipcode+"'" +
+                                " WHERE UserKey = '" + userkey + "'";
+                
                 SqlCommand cmd2 = new SqlCommand(query2, con2);
                 con2.Open();
                 int i = cmd2.ExecuteNonQuery();

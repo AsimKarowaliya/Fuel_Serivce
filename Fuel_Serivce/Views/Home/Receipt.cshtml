@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Fuel_Service.Models
+@model Tuple<FuelQuote_Model, PricingModule>
+@{
+}
+
+<div class="form-group">
+    <h5>Check Out Page</h5>
+</div>
+
+<div class="form-group">
+    <label for="Gallons">Gallons Requested: @Model.Item1.Gallons</label>
+</div>
+
+<div class="form-group">
+    <label for="Address">Delivery Address:  @Model.Item1.Address</label>
+</div>
+
+<div class="form-group">
+    <label for="DeliveryDate">Order Date:   @Model.Item1.Date</label>
+</div>
+
+<div class="form-group">
+    <label for="SuggestedPrice">Price/Gal:  $@Model.Item1.SuggestPrice</label>
+</div>
+
+<div class="form-group">
+    <label for="lines">--------------------------------------------------------</label>
+</div>
+
+<div class="form-group">
+    <label for="TotalDue">Total Price:      $@Model.Item1.TotalPrice</label>
+</div>
+
+
+

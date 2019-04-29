@@ -1,29 +1,33 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+
+@model Fuel_Service.Models.ClientProfile_Model
+
 @{
     ViewData["Title"] = "Manage Profile";
 }
 
-<form asp-controller="home" asp-action="GetClientInfo"  class="needs-validation" novalidate>
+
+<form  asp-controller="home" class="needs-validation" method="post"  novalidate>
     <div class="form-group">
-        Full Name: <input type="text" class="form-control" name="fullname" required minlength="2" maxlength="50">
+        Full Name: <input asp-for="Fullname" type="text" class="form-control" name="fullname" required minlength="2" maxlength="50">
         <div class="invalid-feedback">Please provide input.</div>
     </div>
     
     <div class="form-group">
-        Address 1: <input type="text" class="form-control" name="addressline1" required minlength="4" maxlength="100">
+        Address 1: <input asp-for="Address1" type="text" class="form-control" name="addressline1" required minlength="4" maxlength="100">
         <div class="invalid-feedback">Please provide input.</div><br />
-        Address 2: <input type="text" class="form-control" name="addressline2" minlength="4" maxlength="100"><br>
+        Address 2: <input asp-for="Address2" type="text" class="form-control" name="addressline2" minlength="4" maxlength="100"><br>
     </div>
     
     <div class="form-group">
-        City: <input type="text" class="form-control" name="cityname" required minlength="2" maxlength="100">
+        City: <input asp-for="City" type="text" class="form-control" name="cityname" required minlength="2" maxlength="100">
         <div class="invalid-feedback">Please provide input.</div>
     </div>
     
     <div class="form-group">
-        State: <select name="state" class="form-control" required>
+        State: <select asp-for="State" name="state" class="form-control" required>
             <option value="">Select State</option>
             <option value="AL">AL</option>
             <option value="AK">AK</option>
@@ -80,13 +84,14 @@
     </div>
     
     <div class="form-group">
-        Zip Code: <input type="text" class="form-control" name="zipcode" required minlength="5" maxlength="9">
+        Zip Code: <input asp-for="Zipcode" type="text" class="form-control" name="zipcode" required minlength="5" maxlength="9">
         <div class="invalid-feedback">Please provide input.</div>
     </div>
     
-    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <button asp-action="GetClientInfo" type="submit" class="btn btn-primary">Save Changes</button>
 
 
 </form>
 
 <h2 style="text-align:center; color:deeppink">@ViewBag.Result</h2>
+
