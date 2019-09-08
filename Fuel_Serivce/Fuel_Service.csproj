@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <DebugType>Full</DebugType>
+    <UserSecretsId>255fb1bf-e69e-4fb5-b17a-5133c187211a</UserSecretsId>
   </PropertyGroup>
 
 

@@ -12,13 +12,13 @@ namespace Fuel_Service.Models
     {
         double currentprice = 1.50;     //Standard Price
         double companyProfit = 0.10;    //Company 
-        double locationFactor;
-        double rateHistoryFactor;
-        double gallonsRequestedFactor;
-        double seasonFluctuation;
-
+        
         public (double,double) CalculatePrice(double gallons, string address, DateTime date, int userkey)
         {
+            double locationFactor;
+            double rateHistoryFactor;
+            double gallonsRequestedFactor;
+            double seasonFluctuation;
 
             //Set locationfactor
             if (address.Contains(" TX"))                

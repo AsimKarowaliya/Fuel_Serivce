@@ -51,7 +51,7 @@ namespace Fuel_Serivce.Controllers
             }
             else
             {
-                ViewBag.Result = "Client";
+                ViewBag.Result = "Please complete your Profile";
             }
 
             string y = Globals.userkey.ToString();
@@ -78,6 +78,8 @@ namespace Fuel_Serivce.Controllers
             lmodel.Password = HttpContext.Request.Form["password"].ToString();
             string usertype;
             int result;
+
+
 
             (result, usertype) = lmodel.CheckLogin();
             if (result > 0)
@@ -168,7 +170,7 @@ namespace Fuel_Serivce.Controllers
                 quote.Address = reader.GetString(2) + " " + reader.GetString(5);
                 
             }
-            quote.Gallons = 60;
+            quote.Gallons = 0;
             quote.Date = DateTime.Now.ToString("dd/MM/yyyy");
             quote.viewDate = DateTime.Now;
             
@@ -215,7 +217,7 @@ namespace Fuel_Serivce.Controllers
 
             if (cansubmit == -1)
             {
-                ViewBag.Result = "Please use get the price before submitting.";
+                ViewBag.Result = "Please complete profile and use Get Price before checking out.";
                 return View("Fuel_Quote_Form", tuple.Item1);
             }
 
@@ -239,7 +241,7 @@ namespace Fuel_Serivce.Controllers
             int result = quote.SaveQuote(Globals.userkey);
             if (result > 0)
             {
-                ViewBag.Result = "Data saved successfully!";
+                ViewBag.Result = "Order Submited!";
             }
 
             return this.View("Receipt", quote);

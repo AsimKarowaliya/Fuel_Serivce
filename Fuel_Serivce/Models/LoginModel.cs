@@ -30,15 +30,19 @@ namespace Fuel_Service.Models
             con.Close();
 
             int x = 0;
-            string usertype = dt.Rows[0][1].ToString();
+
+            string usertype = null;
             
+
             if (dt.Rows.Count != 0)
             {
                 x = Convert.ToInt32(dt.Rows[0][0].ToString());
+                usertype = dt.Rows[0][1].ToString();
                 return (x, usertype);
             }
             else
             {
+                
                 return (0, usertype);
             }
         }

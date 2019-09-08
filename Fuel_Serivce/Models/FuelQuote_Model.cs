@@ -40,7 +40,7 @@ namespace Fuel_Service.Models
         {
             int x;
 
-            if (SuggestPrice == 0 | TotalPrice == 0)
+            if (SuggestPrice == 0 | TotalPrice == 0 | Address == "")
             {
                 x = -1;
             }

@@ -38,11 +38,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link text-dark dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"asp-controller="Home" asp-action="Main"> Profile </a>
+                            <a class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" asp-controller="Home" asp-action="Main"> Profile </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" asp-controller="Home" asp-action="Profile_Management">Manage Profile</a>
                                 <a class="dropdown-item" asp-controller="Home" asp-action="Fuel_Quote_Form">Get Fuel Quote Form</a>
-                                <a class="dropdown-item"asp-controller="Home" asp-action="Fuel_History">Fuel History</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="Fuel_History">Fuel History</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-controller="Home" asp-action="Login">Signout</a>
                             </div>
@@ -88,5 +88,6 @@
     <script src="~/js/Validation_FuelForm.js"></script>
     @RenderSection("Scripts", required: false)
 
+    
 </body>
 </html>
